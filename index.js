@@ -27,8 +27,7 @@ const convert = async (req, res, next) => {
   let imageBuffer = decodedImg.data;
   let type = decodedImg.type;
   let extension = mime.getExtension(type);
-  let dateNow = Date.now();
-  let fileName = `image-${dateNow}.` + extension;
+  let fileName = `image.` + extension;
   try {
     fs.writeFileSync("./images/" + fileName, imageBuffer, 'utf8');
     const zpl = await zplImageConvert.encode(`./images/${fileName}`, {
